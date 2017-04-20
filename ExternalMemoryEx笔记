@@ -1,0 +1,56 @@
+1、training
+https://developer.android.com/training/basics/data-storage/files.html#InternalVsExternalStorage
+
+1、https://source.android.com/devices/storage/
+
+Android has evolved over time to support a wide variety of storage device types and features.
+All versions of Android support devices with traditional storage, which includes portable and emulated storage.
+Portable storage can be provided by physical media, like an SD card or USB, that is for temporary data transfer/ file storage.
+ The physical media may remain with the device for an extended period of time, but is not tied to the device and may be removed.
+ SD cards have been available as portable storage since Android 1.0; Android 6.0 added USB support.
+
+ 1）Emulated storage is provided by exposing a portion of internal storage through an emulation layer and has been available since Android 3.0.
+
+Starting in Android 6.0, Android supports adoptable storage, which is provided by physical media, like an SD card or USB,
+that is encrypted and formatted to behave like internal storage. Adoptable storage can store all types of application data.
+
+
+
+1、mediaStore
+
+
+2、https://android.stackexchange.com/questions/39542/confused-by-the-many-locations-of-the-virtual-sdcard
+
+Some devices (like my Nexus 4) don't have an external slot for an SD Card.
+Instead, there's a root folder called /sdcard/ that is treated the same way.
+But I also find other paths that all point to the same files --
+there must be some kind redirects going on (I think this is called symlinks in Linux).
+
+All these paths contain the same files:
+/sdcard/
+/storage/sdcard0/
+/storage/emulated/0/
+/storage/emulated/legacy/
+
+Which path is the "actual" one? What about the other paths? What are they used for, why do they exist?
+
+That has to do with the Multi-User feature enabled with JellyBean 4.2 (not 4.1).
+In order to handle separate accounts, parts of the directory structure had to be changed.
+/sdcard/legacy e.g. always points to the currently logged-in user's sd card directory.
+
+
+3、
+/storage/emulated/0
+The "/storage/emulated/" folder does not really exist.
+ It's what might be called a "symbolic link", or, in simpler terms, a reference to where the real data is stored.
+ You'll need to find the actual physical location on your device where it is stored.
+
+4、
+getExternalFilesDir
+This is like getFilesDir() in that these files will be deleted when the application is uninstalled,
+ however there are some important differences:
+1）Shared storage may not always be available, since removable media can be ejected by the user. Media state can be checked using getExternalStorageState(File).
+2）There is no security enforced with these files. For example, any application holding WRITE_EXTERNAL_STORAGE can write to these files.
+
+
+5、小米4 展示出来的文件管理展示的就是外部存储。

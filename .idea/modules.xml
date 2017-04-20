@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ExternalMemoryEx.iml" filepath="$PROJECT_DIR$/ExternalMemoryEx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExternalMemoryExApp/ExternalMemoryExApp.iml" filepath="$PROJECT_DIR$/ExternalMemoryExApp/ExternalMemoryExApp.iml" />
+    </modules>
+  </component>
+</project>
